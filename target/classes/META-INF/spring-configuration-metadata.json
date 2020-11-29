@@ -1,0 +1,62 @@
+{
+  "groups": [
+    {
+      "name": "swagger",
+      "type": "com.cinnabar.client.config.Swagger2",
+      "sourceType": "com.cinnabar.client.config.Swagger2"
+    },
+    {
+      "name": "test",
+      "type": "com.cinnabar.client.config.Logback",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    }
+  ],
+  "properties": [
+    {
+      "name": "swagger.description",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Swagger2"
+    },
+    {
+      "name": "swagger.group-name",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Swagger2"
+    },
+    {
+      "name": "swagger.title",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Swagger2"
+    },
+    {
+      "name": "swagger.version",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Swagger2"
+    },
+    {
+      "name": "test.app-name",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    },
+    {
+      "name": "test.log-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    },
+    {
+      "name": "test.mapper-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    },
+    {
+      "name": "test.root-level",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    },
+    {
+      "name": "test.sql-level",
+      "type": "java.lang.String",
+      "sourceType": "com.cinnabar.client.config.Logback"
+    }
+  ],
+  "hints": []
+}
