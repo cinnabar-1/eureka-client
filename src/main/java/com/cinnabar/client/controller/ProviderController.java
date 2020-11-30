@@ -3,6 +3,7 @@ package com.cinnabar.client.controller;
 import com.cinnabar.client.beans.User;
 import com.cinnabar.client.config.Logback;
 import com.cinnabar.client.config.authToken.AuthToken;
+import com.cinnabar.client.config.handelResponse.RespEntity;
 import com.cinnabar.client.config.handelResponse.ResponseCtrl;
 import com.cinnabar.client.mapper.UserMapper;
 import io.swagger.annotations.Api;
@@ -25,9 +26,12 @@ public class ProviderController {
 
     @ApiOperation(value = "return a url parameter")
     @RequestMapping(value = "/{name}", method = RequestMethod.POST)
-    public ResponseCtrl.Template findName(@PathVariable("name") String name, @RequestParam("age") Integer age, @RequestBody User user) {
+    public RespEntity findName(@PathVariable("name") String name, @RequestParam("age") Integer age, @RequestParam("account") String acccount, @RequestBody User user) {
         return ResponseCtrl.in((result) -> {
             System.out.println(logback);
+            if("test".equals(name)){
+
+            }
             if ("zhuzhao".equals(name)) {
                 throw new Exception("can can can" + age);
             } else {
@@ -39,7 +43,7 @@ public class ProviderController {
 
     @ApiOperation(value = "test")
     @RequestMapping(value = "/{account}", method = RequestMethod.GET)
-    public ResponseCtrl.Template test(@PathVariable("account") String account, @RequestParam("age") Integer age) {
+    public RespEntity test(@PathVariable("account") String account, @RequestParam("age") Integer age) {
         return ResponseCtrl.in((result) -> result.setData(userMapper.test(account)));
     }
 

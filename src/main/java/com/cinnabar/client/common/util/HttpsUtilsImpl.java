@@ -1,7 +1,6 @@
 package com.cinnabar.client.common.util;
 
 import javax.net.ssl.HttpsURLConnection;
-import javax.validation.constraints.NotNull;
 import java.io.DataOutputStream;
 import java.net.URL;
 import java.util.Scanner;
@@ -16,12 +15,12 @@ import java.util.Scanner;
 public class HttpsUtilsImpl {
     private final String USER_AGENT = "";
 
-    public void sendGet(@NotNull String url) throws Exception {
+    public void sendGet(String url) throws Exception {
 
     }
 
 
-    public void sendPost(@NotNull String url) throws Exception {
+    public void sendPost(String url) throws Exception {
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
         //添加请求头

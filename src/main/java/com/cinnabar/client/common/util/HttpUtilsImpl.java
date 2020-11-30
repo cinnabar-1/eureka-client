@@ -2,11 +2,9 @@ package com.cinnabar.client.common.util;
 
 import com.alibaba.fastjson.JSONObject;
 
-import javax.validation.constraints.NotNull;
 import java.io.DataOutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,7 +20,7 @@ public class HttpUtilsImpl implements HttpUtils {
 
     public static void main(String[] args) throws Exception {
 
-        Map map = (Map)JSONObject.parse("{\"projectId\":\"f68df7ca353e4f978ef202d6fe58cbdb\",\"filePath\":\"code\"}");
+        Map map = (Map) JSONObject.parse("{\"projectId\":\"f68df7ca353e4f978ef202d6fe58cbdb\",\"filePath\":\"code\"}");
         System.out.println(map);
         HttpUtilsImpl http = new HttpUtilsImpl();
 
@@ -44,7 +42,7 @@ public class HttpUtilsImpl implements HttpUtils {
     }
 
     // HTTP GET请求
-    public void sendGet(@NotNull String url) throws Exception {
+    public void sendGet(String url) throws Exception {
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -66,7 +64,7 @@ public class HttpUtilsImpl implements HttpUtils {
     }
 
     // HTTP POST请求
-    public void sendPost(@NotNull String url, @NotNull JSONObject jsonObject) throws Exception {
+    public void sendPost(String url, JSONObject jsonObject) throws Exception {
         URL obj = new URL(url);
 //        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -91,7 +89,7 @@ public class HttpUtilsImpl implements HttpUtils {
     }
 
     @Override
-    public void sendPost(@NotNull String url, JSONObject jsonObject, Map<String, String> map) throws Exception {
+    public void sendPost(String url, JSONObject jsonObject, Map<String, String> map) throws Exception {
         URL obj = new URL(url);
 //        HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();

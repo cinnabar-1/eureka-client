@@ -2,11 +2,11 @@ package com.cinnabar.client.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cinnabar.client.beans.User;
-import com.cinnabar.client.config.authToken.AuthToken;
 import com.cinnabar.client.config.CommonStatic;
+import com.cinnabar.client.config.authToken.AuthToken;
 import com.cinnabar.client.config.authToken.Md5TokenGenerator;
+import com.cinnabar.client.config.handelResponse.RespEntity;
 import com.cinnabar.client.config.handelResponse.ResponseCtrl;
-import com.cinnabar.client.config.handelResponse.ResponseTemplate;
 import com.cinnabar.client.mapper.UserMapper;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ public class AuthController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     @ApiOperation(value = "login")
-    public ResponseCtrl.Template Login(String account, String password) {
+    public RespEntity Login(String account, String password) {
         return ResponseCtrl.in(result -> {
             logger.info("用户名username为:" + account + "密码password为:" + password);
             User user = userMapper.getByUserAccount(account); // todo 数据库查询
@@ -60,10 +60,10 @@ public class AuthController {
     @RequestMapping(value = "test", method = RequestMethod.GET)
     @AuthToken
     @ApiOperation(value = "测试")
-    public ResponseTemplate test() {
+    public RespEntity test() {
         logger.info("**************测试start**************");
 
-        return ResponseTemplate.builder().code(200).message("测试成功").data("测试数据").build();
+        return ResponseCtrl.in((respEntity) -> respEntity.setData("测试数据"));
     }
 
     /**

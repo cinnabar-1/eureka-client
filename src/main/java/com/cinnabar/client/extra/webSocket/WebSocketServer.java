@@ -2,7 +2,6 @@ package com.cinnabar.client.extra.webSocket;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -12,6 +11,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author cinnabar-1
  * @version 1.0.0
@@ -94,7 +94,7 @@ public class WebSocketServer {
         log.info("用户消息:" + userId + ",报文:" + message);
         //可以群发消息
         //消息保存到数据库、redis
-        if (StringUtils.isNotBlank(message)) {
+        if (message != null && !"".equals(message)) {
             try {
                 //解析发送的报文
                 JSONObject jsonObject = JSON.parseObject(message);
@@ -102,7 +102,7 @@ public class WebSocketServer {
                 jsonObject.put("fromUserId", this.userId);
                 String toUserId = jsonObject.getString("toUserId");
                 //传送给对应toUserId用户的websocket
-                if (StringUtils.isNotBlank(toUserId) && webSocketMap.containsKey(toUserId)) {
+                if (toUserId != null && !"".equals(toUserId) && webSocketMap.containsKey(toUserId)) {
                     webSocketMap.get(toUserId).sendMessage(jsonObject.toJSONString());
                 } else {
                     log.error("请求的userId:" + toUserId + "不在该服务器上");
@@ -137,7 +137,7 @@ public class WebSocketServer {
      */
     public static void sendInfo(String message, @PathParam("userId") String userId) throws IOException {
         log.info("发送消息到:" + userId + "，报文:" + message);
-        if (StringUtils.isNotBlank(userId) && webSocketMap.containsKey(userId)) {
+        if (userId != null && !"".equals(userId) && webSocketMap.containsKey(userId)) {
             webSocketMap.get(userId).sendMessage(message);
         } else {
             log.error("用户" + userId + ",不在线！");

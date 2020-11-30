@@ -1,11 +1,6 @@
 package com.cinnabar.client.config.handelResponse;
 
-import lombok.Builder;
-
-
-
-@Builder
-public class ResponseTemplate {
+public class RespEntity {
 
     private Integer code;
 
@@ -17,7 +12,7 @@ public class ResponseTemplate {
         return code;
     }
 
-    public void setCode(Integer code) {
+    void setCode(Integer code) {
         this.code = code;
     }
 
@@ -25,7 +20,7 @@ public class ResponseTemplate {
         return message;
     }
 
-    public void setMessage(String message) {
+    void setMessage(String message) {
         this.message = message;
     }
 

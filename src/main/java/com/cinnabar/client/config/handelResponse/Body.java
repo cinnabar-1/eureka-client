@@ -9,5 +9,5 @@ package com.cinnabar.client.config.handelResponse;
  */
 public interface Body {
     /* 包装在controll层的简单处理逻辑，同一异常处理*/
-    void include(ResponseCtrl.Template o) throws Exception;
+    void include(RespEntity result) throws Exception;
 }
